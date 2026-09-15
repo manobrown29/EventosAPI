@@ -30,5 +30,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(new ErroDTO(409, ex.getMessage()));
     }
+
+    @ExceptionHandler(EventoLotadoException.class)
+    public ResponseEntity<ErroDTO> handleNaoEncontrado(EventoLotadoException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ErroDTO(400, ex.getMessage()));
+    }
 }
 

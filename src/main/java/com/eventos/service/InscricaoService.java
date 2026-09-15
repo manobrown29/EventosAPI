@@ -1,5 +1,6 @@
 package com.eventos.service;
 
+import com.eventos.exception.EventoLotadoException;
 import com.eventos.exception.RegistroDuplicadoException;
 import com.eventos.model.Evento;
 import com.eventos.model.Inscricao;
@@ -43,7 +44,7 @@ public class InscricaoService {
         long totalInscritos = inscricaoRepository.countByEventoId(eventoId);
 
         if (evento.getCapacidadeMaxima() != null && totalInscritos >= evento.getCapacidadeMaxima()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento está lotado");
+            throw new EventoLotadoException("O evento está lotado");
         }
 
         Inscricao inscricao = new Inscricao();
