@@ -6,6 +6,8 @@ import com.eventos.model.Participante;
 import com.eventos.repository.ParticipanteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParticipanteService {
 
@@ -24,6 +26,12 @@ public class ParticipanteService {
 
         participante = participanteRepository.save(participante);
         return toResponseDTO(participante);
+    }
+
+    public List <ParticipanteResponseDTO> listar(){
+        return participanteRepository.findAll().stream()
+                .map(this::toResponseDTO)
+                .toList();
     }
 
     private ParticipanteResponseDTO toResponseDTO(Participante participante) {

@@ -1,0 +1,13 @@
+# Projeto Evento
+
+Sistema em Java para gerenciamento de eventos, participantes e inscrições.
+
+## Funcionalidades
+
+- **Eventos:** Cadastrar, listar e consultar.
+- **Participantes:** Cadastrar e listar.
+- **Inscrições:** Realizar inscrição, listar e cancelar.
+
+## Tecnologias
+
+- **Java**
