@@ -25,7 +25,6 @@ public class ParticipanteController {
     }
 
     @GetMapping
-    @Operation(summary = "Lista os participantes")
     public ResponseEntity<List<ParticipanteResponseDTO>> listar(){
         return ResponseEntity.ok(participanteService.listar());
     }

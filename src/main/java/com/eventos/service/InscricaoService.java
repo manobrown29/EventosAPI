@@ -1,5 +1,6 @@
 package com.eventos.service;
 
+import com.eventos.exception.RegistroDuplicadoException;
 import com.eventos.model.Evento;
 import com.eventos.model.Inscricao;
 import com.eventos.model.Participante;
@@ -36,7 +37,7 @@ public class InscricaoService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Participante não encontrado"));
 
         if (inscricaoRepository.existsByEventoIdAndParticipanteId(eventoId, participanteId)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O participante já está inscrito neste evento");
+            throw new RegistroDuplicadoException("O participante já está inscrito neste evento");
         }
 
         long totalInscritos = inscricaoRepository.countByEventoId(eventoId);

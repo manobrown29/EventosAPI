@@ -2,6 +2,7 @@ package com.eventos.service;
 
 import com.eventos.dto.ParticipanteDTO;
 import com.eventos.dto.ParticipanteResponseDTO;
+import com.eventos.exception.EmailDuplicadoException;
 import com.eventos.model.Participante;
 import com.eventos.repository.ParticipanteRepository;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class ParticipanteService {
     }
 
     public ParticipanteResponseDTO cadastrar(ParticipanteDTO dto){
+        if (participanteRepository.existsByEmail(dto.email())){
+            throw new EmailDuplicadoException("O email já foi cadastrado!");
+        }
 
         Participante participante = Participante.builder()
                 .nome(dto.nome())
