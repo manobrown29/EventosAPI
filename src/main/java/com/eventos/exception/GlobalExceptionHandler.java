@@ -24,5 +24,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ErroDTO(404, ex.getMessage()));
     }
+
+    @ExceptionHandler(RegistroDuplicadoException.class)
+    public ResponseEntity<ErroDTO> handleNaoEncontrado(RegistroDuplicadoException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new ErroDTO(409, ex.getMessage()));
+    }
 }
 
