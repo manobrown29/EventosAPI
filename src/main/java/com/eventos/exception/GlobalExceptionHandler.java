@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
                 .body(new ErroValidacaoDTO(400, erros));
     }
 
-    @ExceptionHandler(RecursoNaoEncontradoException.class)
-    public ResponseEntity<ErroDTO> handleNaoEncontrado(RecursoNaoEncontradoException ex) {
+    @ExceptionHandler(EmailDuplicadoException.class)
+    public ResponseEntity<ErroDTO> handleNaoEncontrado(EmailDuplicadoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ErroDTO(404, ex.getMessage()));
     }
